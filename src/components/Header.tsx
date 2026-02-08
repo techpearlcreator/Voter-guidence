@@ -1,9 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
 import { useFullscreen } from "@/lib/useFullscreen";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function Header() {
   const { content } = useLanguage();
@@ -11,24 +14,33 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 bg-navy text-white shadow-lg">
-      <div className="max-w-7xl 4k:max-w-[90%] mx-auto px-4 4k:px-12 py-3 4k:py-6 flex items-center justify-between">
-        {/* Title section */}
+      <div className="max-w-7xl 4k:max-w-[90%] mx-auto px-3 4k:px-12 py-2 4k:py-5 flex items-center justify-between">
+        {/* Left: SWEEP Logo + Title */}
         <div className="flex items-center gap-3 4k:gap-6">
-          {/* ECI emblem placeholder */}
-          <div className="w-10 h-10 4k:w-20 4k:h-20 rounded-full bg-white/20 flex items-center justify-center text-lg 4k:text-3xl font-bold shrink-0">
-            ECI
-          </div>
-          <div>
-            <h1 className="text-lg 4k:text-kiosk-xl font-bold leading-tight">
+          {/* SWEEP Logo */}
+          <Image
+            src={`${basePath}/images/sweep-logo.jpeg`}
+            alt="SWEEP Logo"
+            width={60}
+            height={60}
+            className="w-12 h-12 4k:w-20 4k:h-20 object-contain bg-white rounded-lg p-1 shrink-0"
+          />
+
+          {/* Title block */}
+          <div className="text-center sm:text-left">
+            <h1 className="text-base sm:text-lg 4k:text-kiosk-xl font-bold leading-tight">
               {content.header.title}
             </h1>
-            <p className="text-sm 4k:text-kiosk-base text-white/70">
+            <p className="text-xs sm:text-sm 4k:text-kiosk-base text-white/70">
               {content.header.subtitle}
+            </p>
+            <p className="text-xs sm:text-sm 4k:text-kiosk-base text-saffron font-semibold">
+              {content.header.district}
             </p>
           </div>
         </div>
 
-        {/* Controls */}
+        {/* Center controls */}
         <div className="flex items-center gap-2 4k:gap-4">
           <button
             onClick={toggleFullscreen}
@@ -51,6 +63,17 @@ export default function Header() {
             </span>
           </button>
           <LanguageToggle />
+        </div>
+
+        {/* Right: ECI Logo */}
+        <div className="shrink-0">
+          <Image
+            src={`${basePath}/images/eci-logo.jpeg`}
+            alt="Election Commission of India Logo"
+            width={60}
+            height={60}
+            className="w-12 h-12 4k:w-20 4k:h-20 object-contain bg-white rounded-lg p-1"
+          />
         </div>
       </div>
 

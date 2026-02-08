@@ -22,7 +22,7 @@ export interface FormContent {
 
 export interface ContentData {
   meta: { language: string; languageLabel: string; direction: string };
-  header: { title: string; subtitle: string; languageToggleLabel: string };
+  header: { title: string; subtitle: string; district: string; languageToggleLabel: string };
   home: { heading: string; subheading: string };
   forms: Record<string, FormContent>;
   common: Record<string, string>;
