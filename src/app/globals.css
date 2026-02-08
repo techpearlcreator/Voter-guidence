@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-inter), var(--font-tamil), system-ui, sans-serif;
+
+  /* Custom breakpoints */
+  --breakpoint-xs: 320px;
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4k: 3840px;
+
+  /* Indian tricolor accent colors */
+  --color-saffron: #FF9933;
+  --color-saffron-light: #FFF3E0;
+  --color-navy: #000080;
+  --color-navy-light: #E8EAF6;
+  --color-green-accent: #138808;
+  --color-green-light: #E8F5E9;
+
+  /* Primary palette */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a5f;
+
+  /* Kiosk font sizes */
+  --font-size-kiosk-base: 24px;
+  --font-size-kiosk-base--line-height: 32px;
+  --font-size-kiosk-lg: 32px;
+  --font-size-kiosk-lg--line-height: 40px;
+  --font-size-kiosk-xl: 40px;
+  --font-size-kiosk-xl--line-height: 52px;
+  --font-size-kiosk-2xl: 48px;
+  --font-size-kiosk-2xl--line-height: 60px;
+  --font-size-kiosk-3xl: 64px;
+  --font-size-kiosk-3xl--line-height: 80px;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+/* Focus states */
+*:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(255, 153, 51, 0.3);
+  color: #000080;
+}
+
+/* 4K / 75-inch kiosk base styles */
+@media (min-width: 3840px) {
+  html {
+    font-size: 24px;
+  }
+
+  body {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  *:focus-visible {
+    outline-width: 4px;
+    outline-offset: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    scrollbar-width: none;
+  }
+}
